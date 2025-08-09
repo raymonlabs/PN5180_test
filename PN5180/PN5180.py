@@ -13,7 +13,7 @@ class PN5180(ABC):
 		self._spi.open(bus, device)
 		self._spi.max_speed_hz = 50000
 		GPIO.setmode(GPIO.BCM)
-		GPIO.setup(25, GPIO.IN)  # GPIO 25 is the Busy pin (Header 22)
+		GPIO.setup(23, GPIO.IN)  # GPIO 25 is the Busy pin (Header 22)
 		self.__debug = debug
 
 	def _log(self, *args):
@@ -26,8 +26,8 @@ class PN5180(ABC):
 
 	def _wait_ready(self):
 		#self._log("Check Card Ready")
-		if GPIO.input(25):
-			while GPIO.input(25):
+		if GPIO.input(23):
+			while GPIO.input(23):
 				self._log("Card Not Ready - Waiting for Busy Low")
 				time.sleep(.01)
 		#self._log("Card Ready, continuing conversation.")
