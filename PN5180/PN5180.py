@@ -13,7 +13,7 @@ class PN5180(ABC):
 		self._spi.open(bus, device)
 		self._spi.max_speed_hz = 50000
 		GPIO.setmode(GPIO.BCM)
-		GPIO.setup(23, GPIO.IN)  # GPIO 25 is the Busy pin (Header 22)
+		GPIO.setup(23, GPIO.IN)  # Change to your Busy pin (Header 22)
 		self.__debug = debug
 
 	def _log(self, *args):
